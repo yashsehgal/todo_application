@@ -19,6 +19,12 @@ function addTodo(event) {
   // preventing form button from submitting
   event.preventDefault();
 
+  /// saving the new todo item in the todo file
+  // saving it in a local-storage
+  // saveLocalTodos(todoInput.value);
+  if (!saveLocalTodos(todoInput.value)) {
+    return;
+  }
   // Creating a todo div
   const todoDiv = document.createElement('div');
   todoDiv.classList.add('todo');
@@ -31,10 +37,6 @@ function addTodo(event) {
   // appending the newTodo as a child node in 
   // the todo division
   todoDiv.appendChild(newTodo);
-
-  /// saving the new todo item in the todo file
-  // saving it in a local-storage
-  saveLocalTodos(todoInput.value);
 
   // adding the check mark button for the todo item
   const completedButton = document.createElement('button');
@@ -76,7 +78,7 @@ function deleteCheck(e) {
     // adding an event-listener - which will wait for the
     // transition effect/animation to complete itself
     // and remove the item component after that
-    todo.addEventListener('transitionend', function() {
+    todo.addEventListener('transitionend', function () {
       // removing the todo after the ending of the 
       // transition effect
       todo.remove();
@@ -125,6 +127,9 @@ function deleteCheck(e) {
 // }
 
 function saveLocalTodos(todo) {
+  // check if todo is blank
+  if (!todo) return;
+
   // creating a check - To check the already written
   // data(todo-items) in the local storage
   let todos;
@@ -134,9 +139,24 @@ function saveLocalTodos(todo) {
     todos = JSON.parse(localStorage.getItem('todos'));
   }
 
+  // check if todo already exists
+  let isTodoPresent = todos.filter(oldTodo => oldTodo.toLowerCase() === todo.toLowerCase());
+  if (isTodoPresent.length) {
+    // show something to notify user
+    let validationToast = document.getElementById('validation-toast');
+    validationToast.innerHTML = "Todo already exists!";
+    validationToast.classList.add('show-toast');
+    setTimeout(function () {
+      validationToast.classList.remove("show-toast");
+      validationToast.innerHTML = "";
+    }, 3000);
+    return;
+  }
+
   /// pushing a the todo item in the file
   todos.push(todo);
   localStorage.setItem('todos', JSON.stringify(todos));
+  return true;
 }
 
 // creating a feature to implement the todos saved in the local
@@ -154,7 +174,7 @@ function getTodos() {
     todos = JSON.parse(localStorage.getItem('todos'));
   }
 
-  todos.forEach(function(todo){
+  todos.forEach(function (todo) {
     // Creating a todo div
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');

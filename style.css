@@ -223,6 +223,24 @@ select {
   color: white;
 }
 
+#validation-toast {
+  visibility: hidden;
+  text-align: center;
+  position: absolute;
+  top: 80%;
+  width: 15rem;
+  background: grey;
+  color: white;
+  padding: 0.5em 1.5em;
+  border-radius: 10px;
+}
+
+#validation-toast.show-toast {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2s;
+  animation: fadein 0.5s, fadeout 0.5s 2s;
+}
+
 @media screen and (max-width: 850px) {
   form {
     margin-top: 3em;
