@@ -6,11 +6,17 @@
 }
 
 body {
-  background-image: linear-gradient(120deg, #6f65f6, #ff00dd);
-  font-family: "Work Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: inherit;
   line-height: inherit;
   min-height: 100vh;
+}
+
+.mobile-github-button {
+  display: none;
+  text-align: center;
+  margin-top: 1em;
+  text-decoration: none;
 }
 
 header {
@@ -35,18 +41,15 @@ header nav ul {
 
 header nav ul li {
   margin-right: 1em;
-  color: white;
 }
 
 header nav ul li i {
-  color: white;
   font-size: 24px;
   margin-right: 4px;
 }
 
 header nav ul li a {
   text-decoration: none;
-  color: inherit;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -79,6 +82,11 @@ form button {
 form input {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+}
+
+form input, form button {
+  -webkit-box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.2);
 }
 
 form input:focus {
@@ -130,6 +138,9 @@ form button:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .todo li {
@@ -149,6 +160,8 @@ form button:hover {
 
 .trash-btn {
   background-color: red;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .todo-item {
@@ -208,5 +221,59 @@ select {
 .select:hover::after {
   background-color: #292929;
   color: white;
+}
+
+@media screen and (max-width: 850px) {
+  form {
+    margin-top: 3em;
+  }
+  form input {
+    width: 80%;
+  }
+  form input, form button {
+    padding: 0.5em;
+    font-size: medium;
+  }
+  form input::-webkit-input-placeholder {
+    font-size: medium;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
+  form input:-ms-input-placeholder {
+    font-size: medium;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+  }
+  form input::-ms-input-placeholder {
+    font-size: medium;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+  }
+  form input::placeholder {
+    font-size: medium;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .mobile-github-button {
+    display: block;
+  }
+  header h2 {
+    text-align: center;
+    float: none;
+    margin-top: 2em;
+  }
+  header nav {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
