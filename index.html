@@ -28,6 +28,9 @@
     </nav>
   </header>
 
+  <a href="https://github.com/yashsehgal/todo_application/" class="mobile-github-button">
+    <i class="fab fa-github"></i> Check on GitHub
+  </a>
   <!-- Creating a form section for the Todo application -->
   <form>
     <input type="text" class="todo-input" placeholder="Add a new Task"/>
@@ -36,14 +39,18 @@
     </button>
 
     <!-- Creating a todo filter -->
-    <div class="select">
-      <select name="todos" id="" class="filter-todo">
+    <!-- <div class="select">
+      <select name="todos" class="filter-todo">
         <option value="all">All</option>
         <option value="completed">Completed Tasks</option>
         <option value="uncompleted">Uncompleted Tasks</option>
       </select>
-    </div>
+    </div> -->
   </form>
+
+  <!-- Importing audio sounds -->
+  <audio id="complete-sound" src="sounds/complete.mp3" preload="auto"></audio>
+  <audio id="remove-sound" src="sounds/remove.mp3" preload="auto"></audio>
 
   <div class="todo-container">
     <ul class="todo-list">
