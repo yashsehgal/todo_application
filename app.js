@@ -18,7 +18,12 @@ filterOption.addEventListener('click', filterTodo);
 function addTodo(event) {
   // preventing form button from submitting
   event.preventDefault();
-
+  
+  // removes the first character while it's a space
+  while (todoInput.value[0] == ' ') {
+	  todoInput.value = todoInput.value.slice(1);
+  }
+  
   /// saving the new todo item in the todo file
   // saving it in a local-storage
   // saveLocalTodos(todoInput.value);
